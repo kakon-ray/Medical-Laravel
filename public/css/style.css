@@ -1,0 +1,301 @@
+/* ==========================================
+        Start Global Section
+=============================================*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Roboto+Condensed:wght@300;700&display=swap");
+* {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* mdn booststrap */
+
+
+/* ==========================================
+        Start Header Nabar Section 
+=============================================*/
+header .form-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f8f9fa;
+  border: none;
+  box-shadow: none !important;
+  font-size: 25px;
+  font-weight: 700;
+  display: none;
+}
+header .form-control:focus {
+  background-color: #f8f9fa;
+}
+#cross {
+  display: none;
+}
+.fa-times {
+  position: absolute;
+  top: 40%;
+  font-size: 25px;
+  color: rgba(58, 56, 56, 0.459);
+}
+.search a {
+  color: black;
+}
+.dropdown-menu.show {
+  top: 64px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #00c0e1;
+}
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #00c0e1;
+}
+.navbar-light .navbar-nav .nav-link {
+  font-weight: 700;
+}
+
+/* ==========================================
+        Start Header Slider Section 
+=============================================*/
+
+.img-fluid {
+  height: 550px;
+}
+
+.carousel-caption {
+  bottom: 7.25rem;
+}
+
+/* ==========================================
+        Start Header Provide Section 
+=============================================*/
+.Provide-section .fas {
+  font-size: 50px;
+}
+.title-width {
+  width: 8%;
+  height: 4px;
+  background-color: #00c0e1;
+}
+
+/* ==========================================
+        Start Header Exprence  Section 
+=============================================*/
+
+.enperence-section .title-width {
+  background-color: #ffffff;
+  width: 25%;
+}
+.enperence-section .ex-bg-1 {
+  background-color: #147b8d;
+}
+.enperence-section .ex-bg-2 {
+  background-color: #00a5c2;
+}
+.enperence-section .ex-bg-3 {
+  background-color: #1390a7;
+}
+.enperence-section .ex-bg-4 {
+  background-color: #1ab0ca;
+}
+.enperence-section .count {
+  font-size: 4em;
+  font-style: normal;
+  font-weight: 300;
+}
+.enperence-section .fas {
+  font-size: 3em;
+}
+.enperence-section .title {
+  font-weight: 700;
+}
+
+/* ==========================================
+        Doctor Section
+=============================================*/
+.doctor-section .img-hover {
+  position: relative;
+}
+
+.doctor-section .image {
+  display: block;
+  width: 100%;
+  height: 400px;
+}
+
+.doctor-section .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #0ebad8c2;
+}
+
+.doctor-section .img-hover:hover .overlay {
+  opacity: 1;
+}
+
+.doctor-section .text {
+  font-size: 25px;
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.doctor-section .text a {
+  color: #f8f9fa;
+}
+.doctor-section .font-bold {
+  font-weight: 700;
+}
+/* ==========================================
+      Start appointment section
+=============================================*/
+
+.appointment-section {
+  background-color: #0ebad8;
+  padding: 50px 0;
+}
+
+/* ==========================================
+      Start Letest News section
+=============================================*/
+.img-container {
+  position: relative;
+}
+
+.letest-news .image {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+
+.letest-news .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #21a6d3b9;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.5s ease;
+}
+
+.img-container:hover .overlay {
+  height: 25%;
+}
+
+.letest-news .text {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+}
+
+/* ==========================================
+      Start Letest Opening section
+=============================================*/
+.opening-section {
+  background-image: url("../img/opening.jpg");
+  width: 100%;
+  height: 420px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  /* background-size: 100% 100%; */
+}
+
+.opening-section .card {
+  background-color: #fbfdffd0;
+}
+
+/* ==========================================
+      Start Footer section
+=============================================*/
+.footer-section .catagori p {
+  border-bottom: 1px solid rgb(116, 107, 107);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 0;
+}
+
+/* ==============================================================================================================
+  Start appointment page
+================================================================================================================*/
+
+.appointment-page-contact {
+  background-image: url("../img/opening.jpg");
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+  /* background-size: 100% 100%; */
+}
+
+.appointment-page-contact .card {
+  background-color: #1c1c1da2;
+}
+
+/* ==============================================================================================================
+  Start Clinic page
+================================================================================================================*/
+.accordion-button:not(.collapsed) {
+  background-color: #00c0e1;
+  color: #fff;
+}
+
+.accordion-button {
+  background-color: #00c0e1;
+  color: #fff;
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.progress {
+  height: 2rem;
+}
+
+/* ==============================================================================================================
+  Start Contact Page
+================================================================================================================*/
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 61%;
+  position: relative;
+  height: 0;
+}
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border-right: none;
+}
+
+.contact-section input {
+  border-left: none;
+}
+
+
+/* sidebar css */
