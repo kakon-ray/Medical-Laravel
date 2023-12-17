@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -17,14 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $currentAdmin = cookie::get('admin');
 
-        if($currentAdmin){
-            return $next($request);
+        if(!Auth::guard('admin')->check()){
+            return redirect('admin/login');
         }
-        else{
-            return redirect('/login');
-        }
+        return $next($request);
     }
-    
 }

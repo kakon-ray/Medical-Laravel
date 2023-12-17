@@ -1,34 +1,21 @@
 <?php
 
+use App\Http\Controllers\User\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SiteController;
-use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', [SiteController::class, 'home']);
-Route::get('/clinic', [SiteController::class, 'clinic']);
-Route::get('/appointment', [SiteController::class, 'appointment']);
-Route::get('/contact', [SiteController::class, 'contact']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// admin section
+Route::name('user.')->prefix('user')->group(function () {
 
-Route::get('/admin', [SiteController::class, 'admin'])->middleware('AdminAuth');
+    Route::middleware('auth','verified')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+ 
+    });
+    
+});
 
-// login and reg
-Route::get('/login', [SiteController::class, 'Login']);
-Route::get('/reg', [SiteController::class, 'Registation']);
-Route::post('/admin-registaion', [SiteController::class, 'admin_registaion']);
-Route::post('/admin-login', [SiteController::class, 'admin_login']);
-Route::post('/logout', [SiteController::class, 'logout']);
-Route::post('/add-apppointment', [SiteController::class, 'add_apppointment']);
-Route::get('/remove-appointment', [SiteController::class, 'remove_appointment']);
+require __DIR__.'/auth.php';
+require __DIR__.'/admin_auth.php';
