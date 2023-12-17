@@ -1,38 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>@yield('title')</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        {{-- bootstrap css --}}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-        
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-         
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-       
+
+        <!-- Style css -->
+        <link rel="stylesheet" href="{{ asset('guest/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('guest/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('guest/css/animation.css') }}">
+
+        <!-- mdn bootstrap -->
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
+        <style>
+            .swalstyle {
+                width: 300px !important;
+                height: 220px !important;
+                font-size: 10px !important;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="app">
+
+            <main>
+
 
                 @yield('content')
-            </div>
+
+
+            </main>
         </div>
 
-        <!-- sweet alert -->
+        <!-- ckeditor use in blog description -->
+        <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <script>
+            CKEDITOR.replace('summary-ckeditor');
+        </script>
+
+
+
+        <script src="{{ asset('guest/js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('guest/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('guest/js/custom.js') }}"></script>
+        <script src="{{ asset('admin/js/auth.js') }}"></script>
+        <!-- sweetalert -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="{{asset('js/auth.js')}}"></script>
+
+        <!-- axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <!-- MDB -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
     </body>
+
 </html>
