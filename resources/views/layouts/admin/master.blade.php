@@ -19,6 +19,8 @@
 
 
        <!-- Style css -->
+       <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
+
        <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
        <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet">
 
@@ -55,6 +57,24 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
+    
+
+
+    <script>
+        var desc;
+        ClassicEditor
+            .create(document.querySelector('#add_course_editor'), {
+                ckfinder: {
+                    uploadUrl: '{{ route('admin.image.upload') . '?_token=' . csrf_token() }}',
+                }
+            })
+            .then(editor => {
+                console.log(editor)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 </body>
 
