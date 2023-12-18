@@ -33,7 +33,7 @@
                 <a class="collapse-item" href="{{route('admin.doctor')}}">Add Doctor</a>
             </div>
             <div class="bg-white my-1 py-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('admin.doctor.manage')}}">Manage Doctor</a>
+                <a class="collapse-item" href="{{route('admin.doctor.action')}}">Manage Doctor</a>
             </div>
         </div>
     </li>

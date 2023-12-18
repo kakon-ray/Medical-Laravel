@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class DoctorController extends Controller
 {
     public function index(){
-        return view('admin.doctor.index');
+        return view('admin.doctor.add_doctor');
     }
     public function manage_doctor(){
-        return view('admin.doctor.manage_doctor');
+        return view('admin.doctor.doctor_action');
     }
 }

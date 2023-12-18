@@ -63,7 +63,7 @@
     <script>
         var desc;
         ClassicEditor
-            .create(document.querySelector('#add_course_editor'), {
+            .create(document.querySelector('#ck_editor'), {
                 ckfinder: {
                     uploadUrl: '{{ route('admin.image.upload') . '?_token=' . csrf_token() }}',
                 }
