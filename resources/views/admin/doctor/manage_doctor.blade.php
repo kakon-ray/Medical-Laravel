@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 @section('title')
-    {{ 'Dashboard | Laravel Auth ' }}
+    {{ 'Manage Doctor | Laravel Auth ' }}
 @endsection
 
 @section('content')
@@ -29,31 +29,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('admin.doctor.submit') }}" id="addservicesalert"
-                                    enctype="multipart/form-data">
-                                    @csrf
-
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <div class="my-4">
-                                        <label>Doctor Name</label>
-                                        <input required type="text" class="form-control" name="services_title"
-                                            placeholder="Services Title">
-                                    </div>
-
-                                    <div class="my-4">
-                                        <label>Doctors Details</label>
-                                        <textarea class="form-control" id="ck_editor" row="10" name="description"></textarea>
-                                    </div>
-                                    <div class="my-4">
-                                        <label class="form-label">Doctors Image</label>
-                                        <input name="doctor_image" type="file" class="form-control">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">
-                                        Submit
-                                    </button>
-
-
-                                </form>
+                              
                             </div>
                         </div>
                     </div>

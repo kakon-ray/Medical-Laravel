@@ -11,6 +11,9 @@ class DoctorController extends Controller
         return view('admin.doctor.add_doctor');
     }
     public function manage_doctor(){
-        return view('admin.doctor.doctor_action');
+        return view('admin.doctor.manage_doctor');
+    }
+    public function manage_doctor_submit(){
+      
     }
 }
