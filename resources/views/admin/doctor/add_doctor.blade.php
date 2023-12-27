@@ -36,13 +36,18 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="my-4">
                                         <label>Doctor Name</label>
-                                        <input required type="text" class="form-control" name="services_title"
-                                            placeholder="Services Title">
+                                        <input required type="text" class="form-control" name="doctor_name"
+                                            placeholder="Doctor Name">
+                                    </div>
+                                    <div class="my-4">
+                                        <label>Doctor Phone Number</label>
+                                        <input required type="text" class="form-control" name="doctor_phonenumber"
+                                            placeholder="Doctor Phone Number">
                                     </div>
 
                                     <div class="my-4">
                                         <label>Doctors Details</label>
-                                        <textarea class="form-control" id="ck_editor" row="10" name="description"></textarea>
+                                        <textarea class="form-control" id="ck_editor" row="10" name="doctor_details"></textarea>
                                     </div>
                                     <div class="my-4">
                                         <label class="form-label">Doctors Image</label>

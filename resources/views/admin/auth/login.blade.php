@@ -58,11 +58,11 @@
                                             name="remember">
                                         <span
                                             class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-                                        </label>
+                                      
                                     </div>
 
 
-                                    <x-primary-button class="btn btn-info btn-block btn-lg gradient-custom-4 text-light">
+                                    <x-primary-button class="btn mt-4 btn-info btn-block btn-lg gradient-custom-4 text-light">
                                         {{ __('Log in') }}
                                     </x-primary-button>
 
