@@ -25,12 +25,42 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Add Doctor</h2>
+                            <h2>Manage Doctor</h2>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="card m-0 p-4">
-                              
-                            </div>
+                        <div class="col-lg-12 table-responsive">
+                            <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
+                                <thead class="table-dark">
+                                    <tr class="text-center">
+                                        <th class="th-sm">Doctor Image</th>
+                                        <th class="th-sm">Doctor Name</th>
+                                        <th class="th-sm">Phone Number</th>
+                                        <th class="th-sm">Details</th>
+                                        <th class="th-sm">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($allDoctor as $item)
+                                        <tr class="text-center">
+                                            <td class="th-sm ">
+                                                <img src="{{$item->doctor_image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
+                                            </td>
+                                            <td class="th-sm ">{{ $item->doctor_name }}</td>
+                                            <td class="th-sm ">{{ $item->doctor_phonenumber }}</td>
+                                            <td class="th-sm ">{{ $item->doctor_details }}</td>
+            
+                                            <td class="th-sm">
+                                                <a href="{{ route('admin.doctor.update', ['id' => $item->id]) }}" type="button"
+                                                    class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+
+                                                    <button type="button" onclick="delete_doctor({!! $item->id !!})"
+                                                        class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+            
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -65,4 +95,72 @@
         aria-hidden="true">
     </div>
         <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+        <script>
+            const delete_doctor = (id) => {
+                Swal.fire({
+                    customClass: 'swalstyle',
+                    title: 'Are you sure?',
+                    text: "Delete this Item",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios
+                            .get("/admin/doctor/delete", {
+                                params: {
+                                    id: id
+                                }
+                            })
+                            .then(function(response) {
+    
+                                if (response.data.status == 200) {
+                                    Swal.fire({
+                                        customClass: 'swalstyle',
+                                        position: 'top-center',
+                                        icon: 'success',
+                                        title: response.data.msg,
+                                        showConfirmButton: false,
+                                        timer: 1500
+    
+                                    })
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 1500);
+    
+    
+                                } else {
+                                    Swal.fire({
+                                        customClass: 'swalstyle',
+                                        position: 'top-center',
+                                        icon: 'error',
+                                        title: response.data.msg,
+                                        text: response.data.err_msg,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+    
+    
+                            })
+                            .catch(function(error) {
+                                Swal.fire({
+                                    customClass: 'swalstyle',
+                                        position: 'top-center',
+                                        icon: 'error',
+                                        title: error.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                });
+                            });
+                    }
+                })
+    
+    
+    
+            }
+        </script>
     @endsection

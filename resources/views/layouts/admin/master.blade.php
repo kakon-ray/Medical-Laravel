@@ -24,6 +24,14 @@
        <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
        <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet">
 
+       <style>
+        .swalstyle {
+            width: 300px !important;
+            height: 220px !important;
+            font-size: 10px !important;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -58,6 +66,14 @@
     <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
     
+    <script src="{{ asset('guest/js/custom.js') }}"></script>
+    <script src="{{ asset('admin/js/ajax_alert.js') }}"></script>
+    <!-- sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
 
     <script>

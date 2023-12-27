@@ -73,6 +73,38 @@ $(document).ready(function(){
         }
       })
     })
+    $('body').on('submit', '#common_alert', function (e) {
+      e.preventDefault();
+  
+      $.ajax({
+        url: $(this).attr('action'),
+        method: "POST",
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (data) {
+          if (data.status == 200) {
+            Swal.fire({
+              icon: "success",
+              title: data.msg,
+              timer: 1500,
+              customClass: 'swalstyle',
+              showConfirmButton: false,
+            });  
+  
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: data.msg,
+              timer: 2000,
+              customClass: 'swalstyle',
+              showConfirmButton: false,
+            });
+          }
+        }
+      })
+    })
 
 
 

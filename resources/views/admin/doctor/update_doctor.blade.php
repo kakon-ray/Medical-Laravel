@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('admin.doctor.submit') }}" id="common_alert"
+                                <form method="POST" action="{{ route('admin.update.doctor.submit') }}" id="addservicesalert"
                                     enctype="multipart/form-data">
                                     @csrf
 
@@ -37,17 +37,17 @@
                                     <div class="my-4">
                                         <label>Doctor Name</label>
                                         <input required type="text" class="form-control" name="doctor_name"
-                                            placeholder="Doctor Name">
+                                            value="{{$doctor->doctor_name}}">
                                     </div>
                                     <div class="my-4">
                                         <label>Doctor Phone Number</label>
                                         <input required type="text" class="form-control" name="doctor_phonenumber"
-                                            placeholder="Doctor Phone Number">
+                                        value="{{$doctor->doctor_phonenumber}}">
                                     </div>
 
                                     <div class="my-4">
                                         <label>Doctors Details</label>
-                                        <textarea class="form-control" id="ck_editor" row="10" name="doctor_details"></textarea>
+                                        <textarea class="form-control" id="ck_editor" row="10" name="doctor_details">{{$doctor->doctor_details}}</textarea>
                                     </div>
                                     <div class="my-4">
                                         <label class="form-label">Doctors Image</label>

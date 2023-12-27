@@ -60,7 +60,7 @@
         <script src="{{ asset('guest/js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('guest/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('guest/js/custom.js') }}"></script>
-        <script src="{{ asset('admin/js/auth.js') }}"></script>
+        <script src="{{ asset('admin/js/ajax_alert.js') }}"></script>
         <!-- sweetalert -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
