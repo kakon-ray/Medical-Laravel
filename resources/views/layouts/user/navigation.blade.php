@@ -28,36 +28,21 @@
               <a class="nav-link" href="{{route('user.clinic')}}"> About Our Clinic</a>
             </li>
            
-            <li class="nav-item dropdown m-3">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-               Other
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-          
-            <!-- <li class="nav-item m-3">
-              <a class="nav-link disabled">Other</a>
-            </li> -->
-              </li>
+            <li class="nav-item m-3">
+              <a class="nav-link" href="{{route('user.clinic')}}"> Our Doctor</a>
+            </li>
+           
+            <li class="nav-item m-3">
+              <a class="nav-link" href="{{route('user.clinic')}}"> Our Serivce</a>
+            </li>
+           
+           
               <li class="nav-item m-3">
               <a class="nav-link" href="{{route('user.contact')}}">Contact</a>
             </li>
 
           </ul>
-          <div class="d-flex justify-content-center align-items-center d-none d-lg-block">
+          <div class="d-flex justify-content-center align-items-center">
             <form class="d-flex">
               <input
                 id="search-input"
@@ -67,7 +52,7 @@
               />
             </form>
             <div class="search ms-3">
-              <a href="javascript:void(0)" onclick="myFunction()"
+              <a data-bs-toggle="modal" class="search-box" data-bs-target="#search-modal"
                 ><i class="fas fa-search" id="toggle"></i
               ></a>
             </div>
@@ -76,5 +61,31 @@
       </div>
     </nav>
     <!-- End Navbar Section -->
+
+
+           <!-- search -->
+           <div class="search-overlay">
+            <div class="modal fade" id="search-modal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="search-overlay-form">
+                            <button type="button" class="btn-close search-overlay-close"
+                                data-bs-dismiss="modal"></button>
+                            <form action="" method="GET">
+                                <select class="nav-input-select"name="category">
+ 
+                                    <option value="course" value="course">Doctor</option>
+                                    <option value="service" value="service">Service</option>
+ 
+                                </select>
+                                <input type="text" required class="input-search" name="item"
+                                    placeholder="Search here" />
+                                <button><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
   </header>

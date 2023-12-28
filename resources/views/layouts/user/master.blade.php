@@ -38,9 +38,11 @@
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 
                     <!-- Style css -->
-                    <link rel="stylesheet" href="{{ asset('guest/css/style.css') }}">
+               
                     <link rel="stylesheet" href="{{ asset('guest/css/bootstrap.css') }}">
                     <link rel="stylesheet" href="{{ asset('guest/css/animation.css') }}">
+                    <link rel="stylesheet" href="{{ asset('guest/css/style.css') }}">
+                    <link rel="stylesheet" href="{{ asset('guest/css/search.css') }}">
                     
                 <style>
                     .swalstyle {
