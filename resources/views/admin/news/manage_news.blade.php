@@ -28,7 +28,7 @@
                             <a href="{{route('news.add')}}" class="btn btn-primary"> + Add Letest News</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Manage <span class="text-primary">Doctor</span></h2>
+                            <h2>Manage <span class="text-primary">News</span></h2>
                         </div>
                         <div class="col-lg-12 table-responsive">
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
@@ -48,9 +48,9 @@
                                             <td class="th-sm ">
                                                 <img src="{{$item->image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
                                             </td>
-                                            <td class="th-sm ">{{ $item->title }}</td>
-                                            <td class="th-sm ">{{ $item->date }}</td>
-                                            <td class="th-sm ">
+                                            <td class="th-sm">{{ $item->title }}</td>
+                                            <td class="th-sm">{{ $item->date }}</td>
+                                            <td class="th-sm text-left">
                                                 @php
                                                     echo $item->details
                                                 @endphp

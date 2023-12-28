@@ -48,9 +48,9 @@
                                             <td class="th-sm ">
                                                 <img src="{{$item->doctor_image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
                                             </td>
-                                            <td class="th-sm ">{{ $item->doctor_name }}</td>
-                                            <td class="th-sm ">{{ $item->doctor_phonenumber }}</td>
-                                            <td class="th-sm ">
+                                            <td class="th-sm">{{ $item->doctor_name }}</td>
+                                            <td class="th-sm">{{ $item->doctor_phonenumber }}</td>
+                                            <td class="th-sm text-left">
                                                 @php
                                                     echo $item->doctor_details
                                                 @endphp
