@@ -10,6 +10,7 @@ Route::middleware(['AdminAuth','VerifiedAdminEmail'])->group(function (){
     Route::post('admin/image/upload', [DoctorController::class, 'image_upload'])->name('admin.image.upload');
 });
 
+
 Route::name('doctor.')->prefix('doctor')->group(function () {
     Route::middleware(['AdminAuth','VerifiedAdminEmail'])->group(function (){
         Route::get('add', [DoctorController::class, 'index'])->name('add');
@@ -32,7 +33,8 @@ Route::name('news.')->prefix('news')->group(function () {
         Route::get('manage', [LetestNewsController::class, 'index'])->name('manage');
         Route::get('add', [LetestNewsController::class, 'add'])->name('add');
         Route::post('add.submit', [LetestNewsController::class, 'add_submit'])->name('add.submit');
-        
+        Route::get('update/{id}', [LetestNewsController::class, 'update_doctor'])->name('update');
+        Route::post('update/submit', [LetestNewsController::class, 'news_update_submit'])->name('update.submit');
     });
 
 });

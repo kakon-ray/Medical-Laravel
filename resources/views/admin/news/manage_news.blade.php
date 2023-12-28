@@ -57,7 +57,7 @@
                                             </td>
             
                                             <td class="th-sm">
-                                                <a href="{{ route('doctor.update', ['id' => $item->id]) }}" type="button"
+                                                <a href="{{ route('news.update', ['id' => $item->id]) }}" type="button"
                                                     class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
                                                     <button type="button" onclick="delete_news({!! $item->id !!})"

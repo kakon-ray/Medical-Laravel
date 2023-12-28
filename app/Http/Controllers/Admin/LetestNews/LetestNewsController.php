@@ -89,4 +89,108 @@ class LetestNewsController extends Controller
             }
         }
     }
+
+    public function update_doctor(Request $request)
+    {
+        $letestNews = LetestNews::find($request->id);
+        return view('admin.news.update_news',compact('letestNews'));
+
+    }
+    public function news_update_submit(Request $request)
+    {
+        $letestNews = LetestNews::find($request->id);
+
+        if (is_null($letestNews)) {
+            return response()->json([
+                'msg' => "Letest News dosen't exists",
+                'status' => 404
+            ], 404);
+        } else {
+            if($request->image){
+                $arrayRequest = [
+                    'title' => $request->title,
+                    'date' => $request->date,
+                    'image' => $request->image,
+                    'details' => $request->details,
+                ];
+        
+                $arrayValidate  = [
+                    'title' => 'required',
+                    'date' => 'required',
+                    'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                    'details' => ['required', 'string', 'max:500'],
+                ];
+            }else{
+                $arrayRequest = [
+                    'title' => $request->title,
+                    'date' => $request->date,
+                    'details' => $request->details,
+                ];
+        
+                $arrayValidate  = [
+                    'title' => 'required',
+                    'date' => 'required',
+                    'details' => ['required', 'string', 'max:500'],
+                ];
+            }
+
+
+            $response = Validator::make($arrayRequest, $arrayValidate);
+
+            if ($response->fails()) {
+                $msg = '';
+                foreach ($response->getMessageBag()->toArray() as $item) {
+                    $msg = $item;
+                };
+
+                return response()->json([
+                    'status' => 400,
+                    'msg' => $msg
+                ], 200);
+            } else {
+                DB::beginTransaction();
+
+                try {
+
+                    if ($request->image) {
+                        $img = $request->image;
+                        $image =  $img->store('/public/doctor_image');
+                        $image = (explode('/', $image))[2];
+                        $host = $_SERVER['HTTP_HOST'];
+                        $image = "http://" . $host . "/storage/doctor_image/" . $image;
+
+                    } else {
+                        $image = $request->old_image;
+                    }
+
+
+                    $letestNews->title = $request->title;
+                    $letestNews->date = $request->date;
+                    $letestNews->image = $image;
+                    $letestNews->details = $request->details;
+                    $letestNews->save();
+                    DB::commit();
+
+
+                } catch (\Exception $err) {
+                    DB::rollBack();
+                    $letestNews = null;
+                }
+
+                if (is_null($letestNews)) {
+                    return response()->json([
+                        'status' => 500,
+                        'msg' => 'Internal Server Error',
+                        'err_msg' => $err->getMessage()
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 200,
+                        'msg' => 'letestNews Information Update Successfylly'
+                    ]);
+                }
+            }
+        }
+
+    }
 }
