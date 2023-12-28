@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('news.update.submit') }}" id=""
+                                <form method="POST" action="{{ route('news.update.submit') }}" id="common_alert"
                                     enctype="multipart/form-data">
                                     @csrf
 

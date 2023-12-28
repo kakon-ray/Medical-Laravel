@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Add <span class="text-primary">Doctor</span></h2>
+                            <h2>নতুন <span class="text-primary">ডাক্তার  </span>যুক্ত করুন</h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
@@ -34,23 +34,32 @@
                                     @csrf
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                                     <div class="my-4">
-                                        <label>Doctor Name</label>
+                                        <label>ডাক্তার এর নাম লিখুন</label>
                                         <input required type="text" class="form-control" name="doctor_name"
-                                            placeholder="Doctor Name">
-                                    </div>
-                                    <div class="my-4">
-                                        <label>Doctor Phone Number</label>
-                                        <input required type="text" class="form-control" name="doctor_phonenumber"
-                                            placeholder="Doctor Phone Number">
+                                            placeholder="ডা: পৃতিশ তরফদার">
                                     </div>
 
                                     <div class="my-4">
-                                        <label>Doctors Details</label>
+                                        <label>বিশেষজ্ঞ</label>
+                                        <input required type="text" class="form-control" name="doctor_specialist"
+                                            placeholder="মেডিসিন">
+                                    </div>
+
+                                    <div class="my-4">
+                                        <label>ডাক্তার এর মোবাইল নাম্বার লিখুন</label>
+                                        <input required type="text" class="form-control" name="doctor_phonenumber"
+                                            placeholder="01707500512">
+                                    </div>
+
+                                    <div class="my-4">
+                                        <label>ডাক্তার এর বিস্তারিত বর্ননা করুন</label>
                                         <textarea class="form-control" id="ck_editor" row="10" name="doctor_details"></textarea>
                                     </div>
+
                                     <div class="my-4">
-                                        <label class="form-label">Doctors Image</label>
+                                        <label class="form-label">ডাক্তার এর ছবি যুক্ত করুন</label>
                                         <input name="doctor_image" type="file" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-primary">

@@ -25,11 +25,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Update <span class="text-primary">Services</span></h2>
+                            <h2><span class="text-primary">সার্ভিস</span> এর তথ্য পরিবর্তন করুন</h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('services.update.submit') }}" id=""
+                                <form method="POST" action="{{ route('services.update.submit') }}" id="common_alert"
                                     enctype="multipart/form-data">
                                     @csrf
 

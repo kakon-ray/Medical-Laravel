@@ -27,9 +27,11 @@ class DoctorController extends Controller
     }
     public function doctor_submit(Request $request)
     {
+
         $arrayRequest = [
             'doctor_name' => $request->doctor_name,
             'doctor_phonenumber' => $request->doctor_phonenumber,
+            'doctor_specialist' => $request->doctor_specialist,
             'doctor_image' => $request->doctor_image,
             'doctor_details' => $request->doctor_details,
         ];
@@ -38,6 +40,7 @@ class DoctorController extends Controller
             'doctor_name' => 'required',
             'doctor_phonenumber' => 'required|regex:/(01)[0-9]{9}/',
             'doctor_image' => 'required',
+            'doctor_specialist' => 'required',
             'doctor_details' => ['required', 'string', 'max:500'],
         ];
 
@@ -67,6 +70,7 @@ class DoctorController extends Controller
                 $doctor = Doctor::create([
                     'doctor_name' => $request->doctor_name,
                     'doctor_phonenumber' => $request->doctor_phonenumber,
+                    'doctor_specialist' => $request->doctor_specialist,
                     'doctor_image' => $doctor_image,
                     'doctor_details' => $request->doctor_details,
 
@@ -80,12 +84,12 @@ class DoctorController extends Controller
             if ($doctor != null) {
                 return response()->json([
                     'status' => 200,
-                    'msg' => 'Doctor Information Submited Successfylly'
+                    'msg' => 'নতুন ডাক্তার যুক্ত করা হয়েছে'
                 ]);
             } else {
                 return response()->json([
                     'status' => 500,
-                    'msg' => 'Internal Server Error',
+                    'msg' => 'সার্ভার জনিত সমস্যা হয়েছে',
                     'err_msg' => $err->getMessage()
                 ]);
             }
@@ -97,18 +101,20 @@ class DoctorController extends Controller
 
         if (is_null($doctor)) {
             return response()->json([
-                'msg' => "Doctor dosen't exists",
+                'msg' => "কোনো ডাক্তার খুজে পাওয়া যায়নি",
                 'status' => 404
             ], 404);
         } else {
             $arrayRequest = [
                 'doctor_name' => $request->doctor_name,
                 'doctor_phonenumber' => $request->doctor_phonenumber,
+                'doctor_specialist' => $request->doctor_specialist,
                 'doctor_details' => $request->doctor_details,
             ];
 
             $arrayValidate  = [
                 'doctor_name' => 'required',
+                'doctor_specialist' => 'required',
                 'doctor_phonenumber' => 'required|regex:/(01)[0-9]{9}/',
                 'doctor_details' => ['required', 'string', 'max:500'],
             ];
@@ -145,6 +151,7 @@ class DoctorController extends Controller
                     $doctor->doctor_phonenumber = $request->doctor_phonenumber;
                     $doctor->doctor_image = $doctor_image;
                     $doctor->doctor_details = $request->doctor_details;
+                    $doctor->doctor_specialist = $request->doctor_specialist;
                     $doctor->save();
                     DB::commit();
 
@@ -157,13 +164,13 @@ class DoctorController extends Controller
                 if (is_null($doctor)) {
                     return response()->json([
                         'status' => 500,
-                        'msg' => 'Internal Server Error',
+                        'msg' => 'সার্ভার জনিত সমস্যা হয়েছে',
                         'err_msg' => $err->getMessage()
                     ]);
                 } else {
                     return response()->json([
                         'status' => 200,
-                        'msg' => 'Doctor Information Update Successfylly'
+                        'msg' => 'ডাক্তার এর তথ্য আপডেট করা হয়েছে'
                     ]);
                 }
             }
@@ -176,7 +183,7 @@ class DoctorController extends Controller
         if (is_null($doctor)) {
 
             return response()->json([
-                'msg' => "Doctor dosen't exists",
+                'msg' => "কোনো ডাক্তার খুজে পাওয়া যায়নি",
                 'status' => 404
             ], 404);
         } else {
@@ -190,14 +197,14 @@ class DoctorController extends Controller
 
                 return response()->json([
                     'status' => 200,
-                    'msg' => 'Doctor Delete Successfully',
+                    'msg' => 'এই তথ্য ডিলিট করা হয়েছে',
                 ], 200);
             } catch (\Exception $err) {
 
                 DB::rollBack();
 
                 return response()->json([
-                    'msg' => "Internal Server Error",
+                    'msg' => "সার্ভার জনিত সমস্যা হয়েছে",
                     'status' => 500,
                     'err_msg' => $err->getMessage()
                 ], 500);

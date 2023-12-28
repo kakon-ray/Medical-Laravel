@@ -28,7 +28,7 @@
                             <a href="{{route('doctor.add')}}" class="btn btn-primary"> + Add New Doctor</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Manage <span class="text-primary">Doctor</span></h2>
+                            <h2>ম্যনেজ  <span class="text-primary">ডাক্তার</span></h2>
                         </div>
                         <div class="col-lg-12 table-responsive">
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
@@ -36,6 +36,7 @@
                                     <tr class="text-center">
                                         <th class="th-sm">Doctor Image</th>
                                         <th class="th-sm">Doctor Name</th>
+                                        <th class="th-sm">Doctor Specialist</th>
                                         <th class="th-sm">Phone Number</th>
                                         <th class="th-sm">Details</th>
                                         <th class="th-sm">Action</th>
@@ -49,6 +50,7 @@
                                                 <img src="{{$item->doctor_image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
                                             </td>
                                             <td class="th-sm">{{ $item->doctor_name }}</td>
+                                            <td class="th-sm">{{ $item->doctor_specialist }}</td>
                                             <td class="th-sm">{{ $item->doctor_phonenumber }}</td>
                                             <td class="th-sm text-left">
                                                 @php
