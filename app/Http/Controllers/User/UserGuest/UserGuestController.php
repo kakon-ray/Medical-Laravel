@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User\UserGuest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Doctor;
+use App\Models\Services;
 use Illuminate\Http\Request;
 
 class UserGuestController extends Controller
@@ -31,6 +33,14 @@ class UserGuestController extends Controller
     function admin(){
         $all_appointment = Appointment::get();
         return view('admin.admin',['all_appointment'=>$all_appointment]);
+   }
+    function doctor(){
+        $doctor = Doctor::get();
+        return view('user.guest.our_doctor',compact('doctor'));
+   }
+    function services(){
+        $services = Services::get();
+        return view('user.guest.services',compact('services'));
    }
 
 

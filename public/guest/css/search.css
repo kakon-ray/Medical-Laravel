@@ -299,12 +299,12 @@
   }
   
   .search-overlay .search-overlay-form form button:hover {
-    background-color: var(--black-color);
+    background-color: #333;
     color: #fff;
   }
   
   .search-overlay-close {
-    background-color: #fff;
+    background-color: #00c0e1;
     padding: 10px;
     position: absolute;
     top: 70px;

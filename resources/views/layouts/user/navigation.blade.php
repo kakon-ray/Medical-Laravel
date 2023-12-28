@@ -29,11 +29,11 @@
             </li>
            
             <li class="nav-item m-3">
-              <a class="nav-link" href="{{route('user.clinic')}}"> Our Doctor</a>
+              <a class="nav-link" href="{{route('user.doctor')}}"> Our Doctor</a>
             </li>
            
             <li class="nav-item m-3">
-              <a class="nav-link" href="{{route('user.clinic')}}"> Our Serivce</a>
+              <a class="nav-link" href="{{route('user.services')}}"> Our Serivce</a>
             </li>
            
            
