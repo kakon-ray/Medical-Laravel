@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 d-flex justify-content-end">
-                            <a href="{{route('doctor.add')}}" class="btn btn-primary"> + Add New Doctor</a>
+                            <a href="{{route('news.add')}}" class="btn btn-primary"> + Add Letest News</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
                             <h2>Manage Doctor</h2>
@@ -34,25 +34,25 @@
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
                                 <thead class="table-dark">
                                     <tr class="text-center">
-                                        <th class="th-sm">Doctor Image</th>
-                                        <th class="th-sm">Doctor Name</th>
-                                        <th class="th-sm">Phone Number</th>
+                                        <th class="th-sm">Image</th>
+                                        <th class="th-sm">Title</th>
+                                        <th class="th-sm">Date</th>
                                         <th class="th-sm">Details</th>
                                         <th class="th-sm">Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($allDoctor as $item)
+                                    @foreach ($allNews as $item)
                                         <tr class="text-center">
                                             <td class="th-sm ">
-                                                <img src="{{$item->doctor_image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
+                                                <img src="{{$item->image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
                                             </td>
-                                            <td class="th-sm ">{{ $item->doctor_name }}</td>
-                                            <td class="th-sm ">{{ $item->doctor_phonenumber }}</td>
+                                            <td class="th-sm ">{{ $item->title }}</td>
+                                            <td class="th-sm ">{{ $item->date }}</td>
                                             <td class="th-sm ">
                                                 @php
-                                                    echo $item->doctor_details
+                                                    echo $item->details
                                                 @endphp
                                             </td>
             
@@ -60,7 +60,7 @@
                                                 <a href="{{ route('doctor.update', ['id' => $item->id]) }}" type="button"
                                                     class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
-                                                    <button type="button" onclick="delete_doctor({!! $item->id !!})"
+                                                    <button type="button" onclick="delete_news({!! $item->id !!})"
                                                         class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>

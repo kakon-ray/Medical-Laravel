@@ -25,33 +25,33 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Add Doctor</h2>
+                            <h2>Add Letest News</h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('doctor.submit') }}" id="common_alert"
+                                <form method="POST" action="{{ route('news.add.submit') }}" id="common_alert"
                                     enctype="multipart/form-data">
                                     @csrf
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="my-4">
-                                        <label>Doctor Name</label>
-                                        <input required type="text" class="form-control" name="doctor_name"
-                                            placeholder="Doctor Name">
+                                        <label>News Title</label>
+                                        <input required type="text" class="form-control" name="title"
+                                            placeholder="News Title">
                                     </div>
                                     <div class="my-4">
-                                        <label>Doctor Phone Number</label>
-                                        <input required type="text" class="form-control" name="doctor_phonenumber"
-                                            placeholder="Doctor Phone Number">
+                                        <label>News Data</label>
+                                        <input required type="date" class="form-control" name="date"
+                                            placeholder="News Data">
                                     </div>
 
                                     <div class="my-4">
-                                        <label>Doctors Details</label>
-                                        <textarea class="form-control" id="ck_editor" row="10" name="doctor_details"></textarea>
+                                        <label>News Details</label>
+                                        <textarea class="form-control" id="ck_editor" row="10" name="details"></textarea>
                                     </div>
                                     <div class="my-4">
-                                        <label class="form-label">Doctors Image</label>
-                                        <input name="doctor_image" type="file" class="form-control">
+                                        <label class="form-label">News Image</label>
+                                        <input name="image" type="file" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         Submit

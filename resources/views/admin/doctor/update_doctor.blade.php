@@ -29,11 +29,12 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('admin.update.doctor.submit') }}" id="addservicesalert"
+                                <form method="POST" action="{{ route('doctor.update.submit') }}" id="addservicesalert"
                                     enctype="multipart/form-data">
                                     @csrf
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="id" value="{{$doctor->id}}">
                                     <div class="my-4">
                                         <label>Doctor Name</label>
                                         <input required type="text" class="form-control" name="doctor_name"
@@ -52,6 +53,7 @@
                                     <div class="my-4">
                                         <label class="form-label">Doctors Image</label>
                                         <input name="doctor_image" type="file" class="form-control">
+                                        <input name="old_image" value="{{$doctor->doctor_image}}" type="input" class="form-control d-none">
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         Submit

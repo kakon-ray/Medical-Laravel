@@ -22,7 +22,7 @@ $(document).ready(function(){
               
             });
 
-            window.location.href = '/admin/dashboard';
+            window.location.href = '/dashboard';
           }else{
             Swal.fire({
               customClass: 'swalstyle',

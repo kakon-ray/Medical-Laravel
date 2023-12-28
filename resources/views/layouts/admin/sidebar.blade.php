@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -30,10 +30,10 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white my-1 py-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('admin.doctor.add')}}">Add Doctor</a>
+                <a class="collapse-item" href="{{route('doctor.add')}}">Add Doctor</a>
             </div>
             <div class="bg-white my-1 py-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('admin.doctor.manage')}}">Manage Doctor</a>
+                <a class="collapse-item" href="{{route('doctor.manage')}}">Manage Doctor</a>
             </div>
         </div>
     </li>
@@ -45,8 +45,11 @@
             <span>Letest News</span>
         </a>
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Add Letest News</a>
+            <div class="bg-white my-1 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('news.manage')}}">Manage News</a>
+            </div>
+            <div class="bg-white my-1 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('news.add')}}">Add Letest News</a>
             </div>
         </div>
     </li>
