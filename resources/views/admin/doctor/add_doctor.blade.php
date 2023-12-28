@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Add Doctor</h2>
+                            <h2>Add <span class="text-primary">Doctor</span></h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">

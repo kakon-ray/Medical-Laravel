@@ -28,7 +28,7 @@
                             <a href="{{route('doctor.add')}}" class="btn btn-primary"> + Add New Doctor</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Manage Doctor</h2>
+                            <h2>Manage <span class="text-primary">Doctor</span></h2>
                         </div>
                         <div class="col-lg-12 table-responsive">
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">

@@ -25,10 +25,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 d-flex justify-content-end">
-                            <a href="{{route('news.add')}}" class="btn btn-primary"> + Add Letest News</a>
+                            <a href="{{route('services.add')}}" class="btn btn-primary"> + Add New Services</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Manage Doctor</h2>
+                            <h2>Manage <span class="text-primary">Doctor</span></h2>
                         </div>
                         <div class="col-lg-12 table-responsive">
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
@@ -51,7 +51,7 @@
                                             </td>
             
                                             <td class="th-sm">
-                                                <a href="{{ route('news.update', ['id' => $item->id]) }}" type="button"
+                                                <a href="{{ route('services.update', ['id' => $item->id]) }}" type="button"
                                                     class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
                                                     <button type="button" onclick="delete_news({!! $item->id !!})"

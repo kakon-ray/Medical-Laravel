@@ -25,11 +25,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>Add Letest News</h2>
+                            <h2>Add <span class="text-primary">Services</span></h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
-                                <form method="POST" action="{{ route('news.add.submit') }}" id="common_alert"
+                                <form method="POST" action="{{ route('services.add.submit') }}" id=""
                                     enctype="multipart/form-data">
                                     @csrf
 
