@@ -8,11 +8,11 @@
 }
 
 #togglePassword {
-  position: absolute;
-  right: 60px;
-  top: 54%;
-  transform: translateY(-50%);
-  cursor: pointer;
+    position: absolute;
+    right: 60px;
+    top: 52%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
 </style>
     <section class="vh-100 bg-image my-5 ">
@@ -35,7 +35,7 @@
                                         <x-input-label for="email" :value="__('Email')" />
                                         <x-text-input id="email" class="form-control form-control-lg" type="email"
                                             name="email" :value="old('email')" required autofocus autocomplete="username" />
-                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" placeholder="Email"/>
                                     </div>
 
                                     <!-- Password -->
@@ -43,7 +43,7 @@
                                         <x-input-label for="password" :value="__('Password')" />
 
                                         <x-text-input id="password" class="form-control form-control-lg" type="password"
-                                            name="password" id="password" required autocomplete="current-password" />
+                                            name="password" id="password" required autocomplete="current-password" placeholder="Password"/>
                                         <div id="togglePassword" onclick="togglePasswordVisibility()">
                                             👁️ <!-- Unicode eye icon -->
                                         </div>

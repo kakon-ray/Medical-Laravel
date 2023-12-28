@@ -47,7 +47,11 @@
                                             </td>
                                             <td class="th-sm ">{{ $item->doctor_name }}</td>
                                             <td class="th-sm ">{{ $item->doctor_phonenumber }}</td>
-                                            <td class="th-sm ">{{ $item->doctor_details }}</td>
+                                            <td class="th-sm ">
+                                                @php
+                                                    echo $item->doctor_details
+                                                @endphp
+                                            </td>
             
                                             <td class="th-sm">
                                                 <a href="{{ route('admin.doctor.update', ['id' => $item->id]) }}" type="button"

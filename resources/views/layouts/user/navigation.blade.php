@@ -1,11 +1,11 @@
 <header>
     <!-- Start Navbar Section -->
-    <nav class="navbar navbar-expand-lg navbar-light py-2 h6">
+    <nav class="navbar navbar-expand-lg navbar-light mb-0 h6">
       <div class="container">
         <a class="navbar-brand text-info" href="{{'/'}}"
           ><i class="fas fa-stethoscope"></i> MEDICAL</a
         >
-        <button
+        <a
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -15,7 +15,7 @@
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item m-3">

@@ -25,10 +25,7 @@
                 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-                <!-- Style css -->
-                <link rel="stylesheet" href="{{ asset('guest/css/style.css') }}">
-                <link rel="stylesheet" href="{{ asset('guest/css/bootstrap.css') }}">
-                <link rel="stylesheet" href="{{ asset('guest/css/animation.css') }}">
+            
 
                 <!-- mdn bootstrap -->
                 <!-- Font Awesome -->
@@ -40,6 +37,11 @@
                 <!-- MDB -->
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 
+                    <!-- Style css -->
+                    <link rel="stylesheet" href="{{ asset('guest/css/style.css') }}">
+                    <link rel="stylesheet" href="{{ asset('guest/css/bootstrap.css') }}">
+                    <link rel="stylesheet" href="{{ asset('guest/css/animation.css') }}">
+                    
                 <style>
                     .swalstyle {
                         width: 300px !important;
@@ -77,7 +79,7 @@
         <script src="{{ asset('guest/js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('guest/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('guest/js/custom.js') }}"></script>
-        <script src="{{ asset('admin/js/auth.js') }}"></script>
+        <script src="{{ asset('admin/js/ajax_alert.js') }}"></script>
         <!-- sweetalert -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
