@@ -35,13 +35,13 @@
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="my-4">
-                                        <label>Services Title</label>
+                                        <label>সার্ভিস এর সিরোনাম যুক্ত করুন</label>
                                         <input required type="text" class="form-control" name="title"
-                                            placeholder="News Title">
+                                            placeholder="সার্ভিস সিরোনাম">
                                     </div>
 
                                     <div class="my-4">
-                                        <label>News Details</label>
+                                        <label>সার্ভিস এর বিস্তুরিত লিখুন</label>
                                         <textarea class="form-control" id="ck_editor" row="10" name="details"></textarea>
                                     </div>
                                     

@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>নতুন  <span class="text-primary">নিউজ</span>যুক্ত করুন</h2>
+                            <h2>নতুন  <span class="text-primary"> নিউজ</span> যুক্ত করুন</h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="card m-0 p-4">
@@ -35,22 +35,22 @@
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="my-4">
-                                        <label>News Title</label>
+                                        <label>নিউজ সিরোনাম যুক্ত করুন</label>
                                         <input required type="text" class="form-control" name="title"
-                                            placeholder="News Title">
+                                            placeholder="নিউজ টাইটেল">
                                     </div>
                                     <div class="my-4">
-                                        <label>News Data</label>
+                                        <label>নিউজ এর তারিখ যুক্ত করুন</label>
                                         <input required type="date" class="form-control" name="date"
                                             placeholder="News Data">
                                     </div>
 
                                     <div class="my-4">
-                                        <label>News Details</label>
+                                        <label>বিস্তুরিত লিখুন</label>
                                         <textarea class="form-control" id="ck_editor" row="10" name="details"></textarea>
                                     </div>
                                     <div class="my-4">
-                                        <label class="form-label">News Image</label>
+                                        <label class="form-label">নিউজ এর ছবি যুক্ত করুন</label>
                                         <input name="image" type="file" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-primary">
