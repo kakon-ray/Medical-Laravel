@@ -104,7 +104,7 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
         <script>
-            const delete_doctor = (id) => {
+            const delete_news = (id) => {
                 Swal.fire({
                     customClass: 'swalstyle',
                     title: 'Are you sure?',
@@ -117,7 +117,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios
-                            .get("/doctor/delete", {
+                            .get("/news/delete", {
                                 params: {
                                     id: id
                                 }

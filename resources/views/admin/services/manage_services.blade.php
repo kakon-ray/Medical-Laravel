@@ -54,7 +54,7 @@
                                                 <a href="{{ route('services.update', ['id' => $item->id]) }}" type="button"
                                                     class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
-                                                    <button type="button" onclick="delete_news({!! $item->id !!})"
+                                                    <button type="button" onclick="delete_services({!! $item->id !!})"
                                                         class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
@@ -98,7 +98,7 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
         <script>
-            const delete_doctor = (id) => {
+            const delete_services = (id) => {
                 Swal.fire({
                     customClass: 'swalstyle',
                     title: 'Are you sure?',
@@ -111,7 +111,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios
-                            .get("/doctor/delete", {
+                            .get("/services/delete", {
                                 params: {
                                     id: id
                                 }

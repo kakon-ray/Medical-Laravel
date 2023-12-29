@@ -63,12 +63,12 @@ class ServicesController extends Controller
             if ($services != null) {
                 return response()->json([
                     'status' => 200,
-                    'msg' => 'Services Submited Successfylly'
+                    'msg' => 'নতুন সার্ভিস যুক্ত করা হয়েছে'
                 ]);
             } else {
                 return response()->json([
                     'status' => 500,
-                    'msg' => 'Internal Server Error',
+                    'msg' => 'সার্ভারজনিত সমস্যা হয়েছে',
                     'err_msg' => $err->getMessage()
                 ]);
             }
@@ -80,7 +80,7 @@ class ServicesController extends Controller
 
         if (is_null($services)) {
             return response()->json([
-                'msg' => "Services dosen't exists",
+                'msg' => "কোনো সার্ভিস খুজে পাওয়া যায়নি",
                 'status' => 404
             ], 404);
         } else {
@@ -128,16 +128,55 @@ class ServicesController extends Controller
                 if (is_null($services)) {
                     return response()->json([
                         'status' => 500,
-                        'msg' => 'Internal Server Error',
+                        'msg' => 'সার্ভার জনিত সমস্যা হয়েছে',
                         'err_msg' => $err->getMessage()
                     ]);
                 } else {
                     return response()->json([
                         'status' => 200,
-                        'msg' => 'Services Update Successfylly'
+                        'msg' => 'সার্ভিস আপডেট করা হয়েছে'
                     ]);
                 }
             }
         }
     }
+
+    
+    public function delete_services(Request $request)
+    {
+        $doctor = Services::find($request->id);
+
+        if (is_null($doctor)) {
+
+            return response()->json([
+                'msg' => "কোনো সার্ভিস খুজে পাওয়া যায়নি",
+                'status' => 404
+            ], 404);
+        } else {
+
+            DB::beginTransaction();
+
+            try {
+
+                $doctor->delete();
+                DB::commit();
+
+                return response()->json([
+                    'status' => 200,
+                    'msg' => 'এই সার্ভিস ডিলিট করা হয়েছে',
+                ], 200);
+            } catch (\Exception $err) {
+
+                DB::rollBack();
+
+                return response()->json([
+                    'msg' => "সার্ভার জনিত সমস্যা হয়েছে",
+                    'status' => 500,
+                    'err_msg' => $err->getMessage()
+                ], 500);
+            }
+        }
+    }
 }
+
+

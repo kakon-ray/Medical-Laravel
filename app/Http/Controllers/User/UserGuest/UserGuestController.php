@@ -7,6 +7,8 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Services;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class UserGuestController extends Controller
 {
@@ -47,25 +49,73 @@ class UserGuestController extends Controller
 
 
 
-   function add_apppointment(Request $request){
-    $name = $request->name;
-    $phonenumber = $request->phonenumber;
-    $date = $request->date;
-    $category = $request->category;
-    
+   function apppointment_submit(Request $request){
+    $arrayRequest = [
+        'phonenumber' => $request->phonenumber,
+    ];
 
-    $responce = Appointment::insert([
-        'name' => $name,
-        'categorie' => $category,
-        'phonenumber' => $phonenumber,
-        'date_of_birth' => $date,
- 
-    ]);
+    $arrayValidate  = [
+        'phonenumber' => 'required|regex:/(01)[0-9]{9}/'
+    ];
 
+    $response = Validator::make($arrayRequest, $arrayValidate);
 
+    if ($response->fails()) {
+        $msg = '';
+        foreach ($response->getMessageBag()->toArray() as $item) {
+            $msg = $item;
+        };
 
-    if($responce == 1){
-        return 1;
+        return response()->json([
+            'status' => 400,
+            'msg' => $msg
+        ], 200);
+    } else {
+        DB::beginTransaction();
+
+        try {
+
+            $appointment = Appointment::create([
+                'name' => $request->name,
+                'categorie' => $request->categorie,
+                'phonenumber' => $request->phonenumber,
+                'date_of_birth' => $request->date_of_birth,
+
+            ]);
+
+            DB::commit();
+        } catch (\Exception $err) {
+            $appointment = null;
+        }
+
+        if ($appointment != null) {
+            return response()->json([
+                'status' => 200,
+                'msg' => 'আপনার সেবা টি নিশ্চিত করা হয়েছে'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'msg' => 'সার্ভারজনিত সমস্যা হয়েছে',
+                'err_msg' => $err->getMessage()
+            ]);
+        }
     }
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

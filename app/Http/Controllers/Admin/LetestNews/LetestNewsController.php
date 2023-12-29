@@ -193,4 +193,40 @@ class LetestNewsController extends Controller
         }
 
     }
+
+    public function delete_news(Request $request)
+    {
+        $doctor = LetestNews::find($request->id);
+
+        if (is_null($doctor)) {
+
+            return response()->json([
+                'msg' => "কোনো নিউজ খুজে পাওয়া যায়নি",
+                'status' => 404
+            ], 404);
+        } else {
+
+            DB::beginTransaction();
+
+            try {
+
+                $doctor->delete();
+                DB::commit();
+
+                return response()->json([
+                    'status' => 200,
+                    'msg' => 'এই নিউজ ডিলিট করা হয়েছে',
+                ], 200);
+            } catch (\Exception $err) {
+
+                DB::rollBack();
+
+                return response()->json([
+                    'msg' => "সার্ভার জনিত সমস্যা হয়েছে",
+                    'status' => 500,
+                    'err_msg' => $err->getMessage()
+                ], 500);
+            }
+        }
+    }
 }

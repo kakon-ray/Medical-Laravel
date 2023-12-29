@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('categorie');
+            $table->string('name')->nullable();
+            $table->string('categorie')->nullable();
             $table->string('phonenumber');
-            $table->string('date_of_birth');
+            $table->string('date_of_birth')->nullable();
             $table->timestamps();
         });
     }

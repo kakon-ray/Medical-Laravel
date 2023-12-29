@@ -9,12 +9,12 @@ Route::get('/', [UserGuestController::class, 'home'])->name('home');
 
 Route::name('user.')->prefix('user')->group(function () {
 
-        Route::get('/clinic', [UserGuestController::class, 'clinic'])->name('clinic');
-        Route::get('/doctor', [UserGuestController::class, 'doctor'])->name('doctor');
-        Route::get('/services', [UserGuestController::class, 'services'])->name('services');
-        Route::get('/appointment', [UserGuestController::class, 'appointment'])->name('appointment');
-        Route::get('/contact', [UserGuestController::class, 'contact'])->name('contact');
-        Route::post('/add-apppointment', [UserGuestController::class, 'add_apppointment'])->name('add.apppointment');
+        Route::get('clinic', [UserGuestController::class, 'clinic'])->name('clinic');
+        Route::get('doctor', [UserGuestController::class, 'doctor'])->name('doctor');
+        Route::get('services', [UserGuestController::class, 'services'])->name('services');
+        Route::get('appointment', [UserGuestController::class, 'appointment'])->name('appointment');
+        Route::get('contact', [UserGuestController::class, 'contact'])->name('contact');
+        Route::post('apppointment/submit', [UserGuestController::class, 'apppointment_submit'])->name('apppointment.submit');
 
 });
 

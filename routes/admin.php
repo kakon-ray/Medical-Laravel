@@ -31,6 +31,7 @@ Route::name('news.')->prefix('news')->group(function () {
         Route::post('add.submit', [LetestNewsController::class, 'add_submit'])->name('add.submit');
         Route::get('update/{id}', [LetestNewsController::class, 'update_doctor'])->name('update');
         Route::post('update/submit', [LetestNewsController::class, 'news_update_submit'])->name('update.submit');
+        Route::get('delete', [LetestNewsController::class, 'delete_news']);
     });
 });
 
@@ -42,5 +43,6 @@ Route::name('services.')->prefix('services')->group(function () {
         Route::post('add.submit', [ServicesController::class, 'add_submit_services'])->name('add.submit');
         Route::get('update/{id}', [ServicesController::class, 'update_services'])->name('update');
         Route::post('update/submit', [ServicesController::class, 'services_update_submit'])->name('update.submit');
+        Route::get('delete', [ServicesController::class, 'delete_services']);
     });
 });
