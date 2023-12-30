@@ -19,7 +19,7 @@ class SearchController extends Controller
             } else if (isset($search_item_desc[0])) {
                 return view('user.guest.our_doctor', ['allDoctor' => $search_item_desc]);
             } else{
-                return view('user.guest.our_doctor', ['allDoctor' => [0]]);
+                return view('user.guest.our_doctor', ['allDoctor' => false]);
             }
 
             
