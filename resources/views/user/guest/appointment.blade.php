@@ -43,9 +43,11 @@
                                      
                                     </div>
 
-                                    <button type="submit" class="submit_button">
+                                 <div>
+                                    <button type="submit" class="submit_button mx-auto">
                                         সাবমিট
                                     </button>
+                                 </div>
                                 </form>
                             </div>
                         </div>

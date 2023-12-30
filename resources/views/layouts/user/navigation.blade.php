@@ -1,6 +1,6 @@
 <header>
     <!-- Start Navbar Section -->
-    <nav class="navbar navbar-expand-lg navbar-light mb-0">
+    <nav class="navbar navbar-default navbar-static-top navbar-expand-lg navbar-light mb-0">
       <div class="container">
         <a class="navbar-brand text-info" href="{{'/'}}"
           ><i class="fas fa-stethoscope"></i> MEDICAL</a

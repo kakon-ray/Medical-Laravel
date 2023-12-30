@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Contact;
 use App\Models\Doctor;
+use App\Models\LetestNews;
 use App\Models\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,10 @@ use Illuminate\Support\Facades\Validator;
 class UserGuestController extends Controller
 {
     function home(){
-
-        return view('user.guest.home');
+         $allServices = Services::all()->slice(0,6);
+         $allDoctor = Doctor::all();
+         $allLetestNews = LetestNews::all()->slice(0,6);
+        return view('user.guest.home',compact('allServices','allDoctor','allLetestNews'));
    }
 
     function clinic(){
@@ -37,12 +40,12 @@ class UserGuestController extends Controller
         return view('admin.admin',['all_appointment'=>$all_appointment]);
    }
     function doctor(){
-        $doctor = Doctor::get();
-        return view('user.guest.our_doctor',compact('doctor'));
+        $allDoctor = Doctor::all();
+        return view('user.guest.our_doctor',compact('allDoctor'));
    }
     function services(){
-        $services = Services::get();
-        return view('user.guest.services',compact('services'));
+        $allServices = Services::all()->slice(0,6);
+        return view('user.guest.services',compact('allServices'));
    }
 
 

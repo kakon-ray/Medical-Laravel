@@ -36,7 +36,7 @@ class LetestNewsController extends Controller
             'title' => 'required',
             'date' => 'required',
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-            'details' => ['required', 'string', 'max:500'],
+            'details' => ['required','max:200'],
         ];
 
         $response = Validator::make($arrayRequest, $arrayValidate);

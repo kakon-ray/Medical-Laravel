@@ -47,7 +47,7 @@
 
                                     <div class="my-4">
                                         <label>বিস্তুরিত লিখুন</label>
-                                        <textarea class="form-control" id="ck_editor" row="10" name="details"></textarea>
+                                        <textarea class="form-control" row="10" name="details"></textarea>
                                     </div>
                                     <div class="my-4">
                                         <label class="form-label">নিউজ এর ছবি যুক্ত করুন</label>
@@ -93,5 +93,4 @@
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
     </div>
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 @endsection
