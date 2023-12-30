@@ -11,6 +11,28 @@
 /* mdn booststrap */
 
 
+
+
+/* ==========================================
+        common style
+=============================================*/
+
+.submit_button{
+  background-color: #00c0e1;
+  padding: 8px 15px;
+  width: 100%;
+  margin: 20px 0px;
+  border-radius:2px; 
+
+}
+.submit_button:hover{
+  background-color: #07bcdc;
+  padding: 8px 15px;
+  width: 100%;
+  margin: 20px 0px;
+  border-radius:2px; 
+
+}
 /* ==========================================
         Start Header Nabar Section 
 =============================================*/

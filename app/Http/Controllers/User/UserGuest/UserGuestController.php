@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\UserGuest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Contact;
 use App\Models\Doctor;
 use App\Models\Services;
 use Illuminate\Http\Request;
@@ -28,7 +29,6 @@ class UserGuestController extends Controller
    }
 
     function contact(){
-
         return view('user.guest.contact');
    }
 
@@ -91,7 +91,58 @@ class UserGuestController extends Controller
         if ($appointment != null) {
             return response()->json([
                 'status' => 200,
-                'msg' => 'আপনার সেবা টি নিশ্চিত করা হয়েছে'
+                'msg' => 'আপনার ম্যাসেজ টি হসপিটাল কতৃপক্ষের কাছে পাঠানো হয়েছে'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'msg' => 'সার্ভারজনিত সমস্যা হয়েছে',
+                'err_msg' => $err->getMessage()
+            ]);
+        }
+    }
+   }
+   function contact_submit(Request $request){
+
+    $arrayRequest = [
+        'phonenumber' => $request->phonenumber,
+    ];
+
+    $arrayValidate  = [
+        'phonenumber' => 'required|regex:/(01)[0-9]{9}/'
+    ];
+
+    $response = Validator::make($arrayRequest, $arrayValidate);
+
+    if ($response->fails()) {
+        $msg = '';
+        foreach ($response->getMessageBag()->toArray() as $item) {
+            $msg = $item;
+        };
+
+        return response()->json([
+            'status' => 400,
+            'msg' => $msg
+        ], 200);
+    } else {
+        DB::beginTransaction();
+
+        try {
+
+            $contact = Contact::create([
+                'name' => $request->name,
+                'phonenumber' => $request->phonenumber,
+            ]);
+
+            DB::commit();
+        } catch (\Exception $err) {
+            $contact = null;
+        }
+
+        if ($contact != null) {
+            return response()->json([
+                'status' => 200,
+                'msg' => 'আপনার অ্যাপয়েটমেন্ট নিশ্চিত করা হয়েছে'
             ]);
         } else {
             return response()->json([

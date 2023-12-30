@@ -88,6 +88,7 @@ $(document).ready(function(){
             Swal.fire({
               icon: "success",
               title: data.msg,
+              text:'Thanks',
               timer: 1500,
               customClass: 'swalstyle',
               showConfirmButton: false,
@@ -97,6 +98,7 @@ $(document).ready(function(){
             Swal.fire({
               icon: "error",
               title: data.msg,
+              text:'Thanks',
               timer: 2000,
               customClass: 'swalstyle',
               showConfirmButton: false,

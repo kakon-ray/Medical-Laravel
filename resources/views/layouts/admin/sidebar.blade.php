@@ -30,10 +30,10 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white my-1 py-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('doctor.add')}}">নতুন ডাক্তার যুক্ত করুন</a>
+                <a class="collapse-item" href="{{route('dashboard.doctor.add')}}">নতুন ডাক্তার যুক্ত করুন</a>
             </div>
             <div class="bg-white my-1 py-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('doctor.manage')}}">ম্যনেজ ডাক্তার</a>
+                <a class="collapse-item" href="{{route('dashboard.doctor.manage')}}">ম্যনেজ ডাক্তার</a>
             </div>
         </div>
     </li>
@@ -46,10 +46,10 @@
         </a>
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white my-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('news.manage')}}">ম্যনেজ নিউজ</a>
+                <a class="collapse-item" href="{{route('dashboard.news.manage')}}">ম্যনেজ নিউজ</a>
             </div>
             <div class="bg-white my-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('news.add')}}">নতুন নিউজ ‍যুক্ত করুন</a>
+                <a class="collapse-item" href="{{route('dashboard.news.add')}}">নতুন নিউজ ‍যুক্ত করুন</a>
             </div>
         </div>
     </li>
@@ -62,10 +62,34 @@
         </a>
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white my-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('services.manage')}}">ম্যানেজ সার্ভিস</a>
+                <a class="collapse-item" href="{{route('dashboard.services.manage')}}">ম্যানেজ সার্ভিস</a>
             </div>
             <div class="bg-white my-1 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('services.add')}}">নতুন সার্ভিস যুক্ত করুন</a>
+                <a class="collapse-item" href="{{route('dashboard.services.add')}}">নতুন সার্ভিস যুক্ত করুন</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
+            aria-expanded="true" aria-controls="collapsePages3">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>ম্যনেজ অ্যাপয়েটমেন্ট</span>
+        </a>
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white my-1 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('dashboard.appointment.manage')}}">ম্যানেজ অ্যাপয়েটমেন্ট</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4"
+            aria-expanded="true" aria-controls="collapsePages4">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>নতুন ম্যাসেজ</span>
+        </a>
+        <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white my-1 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('dashboard.contact.manage')}}">ম্যানেজ নটিফিকেশন</a>
             </div>
         </div>
     </li>

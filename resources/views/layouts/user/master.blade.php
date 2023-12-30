@@ -42,8 +42,9 @@
                 <style>
                     .swalstyle {
                         width: 300px !important;
-                        height: 220px !important;
+                        height: 200px !important;
                         font-size: 10px !important;
+                        line-height: 2.8 !important;
                     }
                 </style>
 

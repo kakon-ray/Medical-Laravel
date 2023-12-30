@@ -4,7 +4,6 @@
 @endsection
 
 @section('content')
-    <main>
 
 
         <!-- Start appointment Section -->
@@ -18,7 +17,7 @@
                             <h1 class="text-center">Book an appointment now</h1>
                             <div class="title-width m-auto my-4 bg-info"></div>
                             <div class="row mx-2">
-                                <form action="{{ route('user.apppointment.submit') }}" method="POST">
+                                <form action="{{ route('user.apppointment.submit') }}" method="POST" id="common_alert">
                                     @csrf
                                     <div class="row g-2">
                                         <div class="col-lg-6">
@@ -34,26 +33,27 @@
                                             <select class="form-control rounded-0" name="categorie"
                                                 aria-label="Default select example">
                                                 <option selected>মেডিসিন</option>
-                                                <option value="1">সার্জারি</option>
-                                                <option value="2">অর্থপেডিক্স</option>
-                                                <option value="3">গাইনি</option>
+                                                <option value="সার্জারি">সার্জারি</option>
+                                                <option value="অর্থপেডিক্স">অর্থপেডিক্স</option>
+                                                <option value="গাইনি">গাইনি</option>
                                             </select>
                                             <label class="mt-3">ডাক্তার ভিজিট এর তারিখ সিলেক্ট করুন</label>
                                             <input class="form-control" type="date" name="date_of_birth" />
                                         </div>
-                                        <button type="submit" class="btn btn-info my-3">
-                                            সাবমিট
-                                        </button>
+                                     
                                     </div>
+
+                                    <button type="submit" class="submit_button">
+                                        সাবমিট
+                                    </button>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-2"></div>
+                   
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Start Footer Sectin -->
-    </main>
 @endsection

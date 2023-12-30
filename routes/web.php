@@ -14,6 +14,7 @@ Route::name('user.')->prefix('user')->group(function () {
         Route::get('services', [UserGuestController::class, 'services'])->name('services');
         Route::get('appointment', [UserGuestController::class, 'appointment'])->name('appointment');
         Route::get('contact', [UserGuestController::class, 'contact'])->name('contact');
+        Route::post('contact/submit', [UserGuestController::class, 'contact_submit'])->name('contact.submit');
         Route::post('apppointment/submit', [UserGuestController::class, 'apppointment_submit'])->name('apppointment.submit');
 
 });

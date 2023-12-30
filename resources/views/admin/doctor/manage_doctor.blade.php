@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 d-flex justify-content-end">
-                            <a href="{{route('doctor.add')}}" class="btn btn-primary"> + Add New Doctor</a>
+                            <a href="{{route('dashboard.doctor.add')}}" class="btn btn-primary"> + Add New Doctor</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
                             <h2>ম্যনেজ  <span class="text-primary">ডাক্তার</span></h2>
@@ -59,7 +59,7 @@
                                             </td>
             
                                             <td class="th-sm">
-                                                <a href="{{ route('doctor.update', ['id' => $item->id]) }}" type="button"
+                                                <a href="{{ route('dashboard.doctor.update', ['id' => $item->id]) }}" type="button"
                                                     class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
                                                     <button type="button" onclick="delete_doctor({!! $item->id !!})"
@@ -119,7 +119,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios
-                            .get("/doctor/delete", {
+                            .get("/dashboard/doctor/delete", {
                                 params: {
                                     id: id
                                 }

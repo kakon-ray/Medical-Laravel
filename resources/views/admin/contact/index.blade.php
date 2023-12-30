@@ -24,43 +24,28 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12 d-flex justify-content-end">
-                            <a href="{{route('dashboard.news.add')}}" class="btn btn-primary"> + Add Letest News</a>
-                        </div>
                         <div class="col-lg-12 text-center py-2">
-                            <h2>ম্যনেজ <span class="text-primary"> নিউজ</span></h2>
+                            <h2>ম্যনেজ  <span class="text-primary">নটিফিকেশন</span></h2>
                         </div>
                         <div class="col-lg-12 table-responsive">
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
                                 <thead class="table-dark">
                                     <tr class="text-center">
-                                        <th class="th-sm">Image</th>
-                                        <th class="th-sm">Title</th>
-                                        <th class="th-sm">Date</th>
-                                        <th class="th-sm">Details</th>
+                                        <th class="th-sm">নাম</th>
+                                        <th class="th-sm">মোবাইল নাম্বার</th>
                                         <th class="th-sm">Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($allNews as $item)
+                                    @foreach ($allContact as $item)
                                         <tr class="text-center">
-                                            <td class="th-sm ">
-                                                <img src="{{$item->image}}" style="width:100px;height:50px" class="img-fluid" alt="Doctor Image">
-                                            </td>
-                                            <td class="th-sm">{{ $item->title }}</td>
-                                            <td class="th-sm">{{ $item->date }}</td>
-                                            <td class="th-sm text-left">
-                                                @php
-                                                    echo $item->details
-                                                @endphp
-                                            </td>
+                                            <td class="th-sm">{{ $item->name }}</td>
+                                            <td class="th-sm">{{ $item->phonenumber }}</td>
             
                                             <td class="th-sm">
-                                                <a href="{{ route('dashboard.news.update', ['id' => $item->id]) }}" type="button"
-                                                    class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
-                                                    <button type="button" onclick="delete_news({!! $item->id !!})"
+                                                    <button type="button" onclick="delete_contact({!! $item->id !!})"
                                                         class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
@@ -101,10 +86,10 @@
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
     </div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
 
         <script>
-            const delete_news = (id) => {
+            const delete_contact = (id) => {
                 Swal.fire({
                     customClass: 'swalstyle',
                     title: 'Are you sure?',
@@ -117,7 +102,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios
-                            .get("/dashboard/news/delete", {
+                            .get("/dashboard/contact/delete", {
                                 params: {
                                     id: id
                                 }
@@ -130,6 +115,7 @@
                                         position: 'top-center',
                                         icon: 'success',
                                         title: response.data.msg,
+                                        text:'Thanks',
                                         showConfirmButton: false,
                                         timer: 1500
     

@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 d-flex justify-content-end">
-                            <a href="{{route('services.add')}}" class="btn btn-primary"> + Add New Services</a>
+                            <a href="{{route('dashboard.services.add')}}" class="btn btn-primary"> + Add New Services</a>
                         </div>
                         <div class="col-lg-12 text-center py-2">
                             <h2>ম্যানেজ  <span class="text-primary">সার্ভিস</span></h2>
@@ -51,7 +51,7 @@
                                             </td>
             
                                             <td class="th-sm">
-                                                <a href="{{ route('services.update', ['id' => $item->id]) }}" type="button"
+                                                <a href="{{ route('dashboard.services.update', ['id' => $item->id]) }}" type="button"
                                                     class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
                                                     <button type="button" onclick="delete_services({!! $item->id !!})"
@@ -111,7 +111,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios
-                            .get("/services/delete", {
+                            .get("/dashboard/services/delete", {
                                 params: {
                                     id: id
                                 }
