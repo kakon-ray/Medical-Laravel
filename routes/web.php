@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\Dashboard\DashboardController;
+use App\Http\Controllers\User\UserGuest\SearchController;
 use App\Http\Controllers\User\UserGuest\UserGuestController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ Route::name('user.')->prefix('user')->group(function () {
         Route::post('contact/submit', [UserGuestController::class, 'contact_submit'])->name('contact.submit');
         Route::post('apppointment/submit', [UserGuestController::class, 'apppointment_submit'])->name('apppointment.submit');
 
+          // navigation search bar
+          Route::get('search', [SearchController::class,'search'])->name('search');
 });
 
 

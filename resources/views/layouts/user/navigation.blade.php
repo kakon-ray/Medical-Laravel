@@ -71,11 +71,11 @@
                         <div class="search-overlay-form">
                             <button type="button" class="btn-close search-overlay-close"
                                 data-bs-dismiss="modal"></button>
-                            <form action="" method="GET">
+                            <form action="{{route('user.search')}}" method="GET">
                                 <select class="nav-input-select"name="category">
  
-                                    <option value="course" value="course">Doctor</option>
-                                    <option value="service" value="service">Service</option>
+                                    <option value="doctor" >ডাক্তার</option>
+                                    <option value="category">বিশেষজ্ঞ</option>
  
                                 </select>
                                 <input type="text" required class="input-search" name="item"
