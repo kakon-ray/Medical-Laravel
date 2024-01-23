@@ -1,6 +1,6 @@
 
 @extends('layouts.user.master')
-@section('title') {{'Appointment'}} @endsection
+@section('title') {{'Our Clinic'}} @endsection
 
 @section('content')
 

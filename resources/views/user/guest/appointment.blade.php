@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 @section('title')
-    {{ 'Appointment' }}
+    {{ 'Doctor Appointment' }}
 @endsection
 
 @section('content')

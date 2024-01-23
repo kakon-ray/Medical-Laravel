@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-center py-2">
-                            <h2>ম্যনেজ  <span class="text-primary">নটিফিকেশন</span></h2>
+                            <h2>ম্যানেজ  <span class="text-primary">নটিফিকেশন</span></h2>
                         </div>
                         <div class="col-lg-12 table-responsive">
                             <table id="VisitorDt" class="table table-bordered dataTable" cellspacing="0" width="100%">
