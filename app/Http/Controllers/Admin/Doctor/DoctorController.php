@@ -8,6 +8,9 @@ use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class DoctorController extends Controller
 {
@@ -61,11 +64,21 @@ class DoctorController extends Controller
 
             try {
 
-                $img = $request->doctor_image;
-                $doctor_image =  $img->store('/public/doctor_image');
-                $doctor_image = (explode('/', $doctor_image))[2];
-                $host = $_SERVER['HTTP_HOST'];
-                $doctor_image = "http://" . $host . "/storage/doctor_image/" . $doctor_image;
+                // single thumbnil image upload
+                $slug = Str::slug($request->doctor_name, '-');
+
+                if ($request->doctor_image) {
+                    $file = $request->file('doctor_image');
+                    $filename = $slug . '-' . hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+
+                    $img = Image::make($file);
+                    $img->resize(500, 500)->save(public_path('uploads/' . $filename));
+
+                    $host = $_SERVER['HTTP_HOST'];
+                    $doctor_image = "http://" . $host . "/uploads/" . $filename;
+                }
+
+
 
                 $doctor = Doctor::create([
                     'doctor_name' => $request->doctor_name,
@@ -136,15 +149,32 @@ class DoctorController extends Controller
 
                 try {
 
-                    if ($request->doctor_image) {
-                        $img = $request->doctor_image;
-                        $doctor_image =  $img->store('/public/doctor_image');
-                        $doctor_image = (explode('/', $doctor_image))[2];
-                        $host = $_SERVER['HTTP_HOST'];
-                        $doctor_image = "http://" . $host . "/storage/doctor_image/" . $doctor_image;
-                    } else {
-                        $doctor_image = $request->old_image;
-                    }
+                       // single thumbnil image upload
+                       $slug = Str::slug($request->doctor_name, '-');
+
+                       if ($request->doctor_image) {
+   
+                           $pathinfo = pathinfo($doctor->doctor_image);
+                           $filename = $pathinfo['basename'];
+                           $image_path = public_path("/uploads/") . $filename;
+   
+                           if (File::exists($image_path)) {
+                               File::delete($image_path);
+                           }
+   
+   
+                           $file = $request->file('doctor_image');
+                           $filename = $slug . '-' . hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+   
+                           $img = Image::make($file);
+                           $img->resize(500, 300)->save(public_path('uploads/' . $filename));
+   
+                           $host = $_SERVER['HTTP_HOST'];
+                           $doctor_image = "http://" . $host . "/uploads/" . $filename;
+   
+                       } else {
+                           $doctor_image = $request->old_image;
+                       }
 
 
                     $doctor->doctor_name = $request->doctor_name;
@@ -154,8 +184,6 @@ class DoctorController extends Controller
                     $doctor->doctor_specialist = $request->doctor_specialist;
                     $doctor->save();
                     DB::commit();
-
-
                 } catch (\Exception $err) {
                     DB::rollBack();
                     $doctor = null;
@@ -191,6 +219,14 @@ class DoctorController extends Controller
             DB::beginTransaction();
 
             try {
+
+                $pathinfo = pathinfo($doctor->doctor_image);
+                $filename = $pathinfo['basename'];
+                $image_path = public_path("/uploads/") . $filename;
+
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
 
                 $doctor->delete();
                 DB::commit();

@@ -10,12 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 class LetestNewsController extends Controller
 {
     public function index()
     {
         $allNews = LetestNews::all();
-        return view('admin.news.manage_news',compact('allNews'));
+        return view('admin.news.manage_news', compact('allNews'));
     }
 
     public function add()
@@ -36,7 +40,7 @@ class LetestNewsController extends Controller
             'title' => 'required',
             'date' => 'required',
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-            'details' => ['required','max:200'],
+            'details' => ['required', 'max:200'],
         ];
 
         $response = Validator::make($arrayRequest, $arrayValidate);
@@ -56,11 +60,19 @@ class LetestNewsController extends Controller
 
             try {
 
-                $img = $request->image;
-                $image =  $img->store('/public/doctor_image');
-                $image = (explode('/', $image))[2];
-                $host = $_SERVER['HTTP_HOST'];
-                $image = "http://" . $host . "/storage/doctor_image/" . $image;
+                // single thumbnil image upload
+                $slug = Str::slug($request->title, '-');
+
+                if ($request->image) {
+                    $file = $request->file('image');
+                    $filename = $slug . '-' . hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+
+                    $img = Image::make($file);
+                    $img->resize(500, 500)->save(public_path('uploads/' . $filename));
+
+                    $host = $_SERVER['HTTP_HOST'];
+                    $image = "http://" . $host . "/uploads/" . $filename;
+                }
 
                 $news = LetestNews::create([
                     'title' => $request->title,
@@ -93,8 +105,7 @@ class LetestNewsController extends Controller
     public function update_doctor(Request $request)
     {
         $letestNews = LetestNews::find($request->id);
-        return view('admin.news.update_news',compact('letestNews'));
-
+        return view('admin.news.update_news', compact('letestNews'));
     }
     public function news_update_submit(Request $request)
     {
@@ -106,27 +117,27 @@ class LetestNewsController extends Controller
                 'status' => 404
             ], 404);
         } else {
-            if($request->image){
+            if ($request->image) {
                 $arrayRequest = [
                     'title' => $request->title,
                     'date' => $request->date,
                     'image' => $request->image,
                     'details' => $request->details,
                 ];
-        
+
                 $arrayValidate  = [
                     'title' => 'required',
                     'date' => 'required',
                     'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
                     'details' => ['required', 'string', 'max:500'],
                 ];
-            }else{
+            } else {
                 $arrayRequest = [
                     'title' => $request->title,
                     'date' => $request->date,
                     'details' => $request->details,
                 ];
-        
+
                 $arrayValidate  = [
                     'title' => 'required',
                     'date' => 'required',
@@ -152,16 +163,32 @@ class LetestNewsController extends Controller
 
                 try {
 
-                    if ($request->image) {
-                        $img = $request->image;
-                        $image =  $img->store('/public/doctor_image');
-                        $image = (explode('/', $image))[2];
-                        $host = $_SERVER['HTTP_HOST'];
-                        $image = "http://" . $host . "/storage/doctor_image/" . $image;
+                 // single thumbnil image upload
+                 $slug = Str::slug($request->title, '-');
 
-                    } else {
-                        $image = $request->old_image;
-                    }
+                 if ($request->image) {
+
+                     $pathinfo = pathinfo($letestNews->image);
+                     $filename = $pathinfo['basename'];
+                     $image_path = public_path("/uploads/") . $filename;
+
+                     if (File::exists($image_path)) {
+                         File::delete($image_path);
+                     }
+
+
+                     $file = $request->file('image');
+                     $filename = $slug . '-' . hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+
+                     $img = Image::make($file);
+                     $img->resize(500, 300)->save(public_path('uploads/' . $filename));
+
+                     $host = $_SERVER['HTTP_HOST'];
+                     $image = "http://" . $host . "/uploads/" . $filename;
+
+                 } else {
+                     $image = $request->old_image;
+                 }
 
 
                     $letestNews->title = $request->title;
@@ -170,8 +197,6 @@ class LetestNewsController extends Controller
                     $letestNews->details = $request->details;
                     $letestNews->save();
                     DB::commit();
-
-
                 } catch (\Exception $err) {
                     DB::rollBack();
                     $letestNews = null;
@@ -191,14 +216,13 @@ class LetestNewsController extends Controller
                 }
             }
         }
-
     }
 
     public function delete_news(Request $request)
     {
-        $doctor = LetestNews::find($request->id);
+        $letestNews = LetestNews::find($request->id);
 
-        if (is_null($doctor)) {
+        if (is_null($letestNews)) {
 
             return response()->json([
                 'msg' => "কোনো নিউজ খুজে পাওয়া যায়নি",
@@ -210,7 +234,15 @@ class LetestNewsController extends Controller
 
             try {
 
-                $doctor->delete();
+                $pathinfo = pathinfo($letestNews->image);
+                $filename = $pathinfo['basename'];
+                $image_path = public_path("/uploads/") . $filename;
+
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+
+                $letestNews->delete();
                 DB::commit();
 
                 return response()->json([
